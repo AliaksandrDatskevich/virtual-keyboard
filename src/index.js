@@ -1,4 +1,8 @@
+import './style.scss';
+
 import keys from './keys';
+
+// npx eslint src/index.js
 
 const outerWrapper = document.createElement('div');
 outerWrapper.className = 'wrapper';
@@ -20,7 +24,7 @@ for (let i = 0; i < keys.length; i += 1) {
   row.className = 'keyboard-row';
   for (let j = 0; j < keys[i].length; j += 1) {
     const key = document.createElement('div');
-    key.className = 'key';
+    key.className = `key ${keys[i][j].className}`;
     const character = document.createElement('span');
     character.textContent = keys[i][j].eng.caseUp;
     key.appendChild(character);
