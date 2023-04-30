@@ -1,0 +1,22 @@
+const outerWrapper = document.createElement('div');
+outerWrapper.className = 'wrapper';
+const title = document.createElement('p');
+title.textContent = 'Virtual Keyboard';
+title.className = 'title';
+outerWrapper.appendChild(title);
+const textArea = document.createElement('textarea');
+textArea.className = 'textarea';
+outerWrapper.appendChild(textArea);
+const keyboard = document.createElement('div');
+keyboard.className = 'keyboard';
+// TODO keys
+outerWrapper.appendChild(keyboard);
+const os = document.createElement('p');
+os.textContent = 'The keyboard was created in the Windows operating system';
+os.className = 'os';
+outerWrapper.appendChild(os);
+const lang = document.createElement('p');
+lang.textContent = 'To switch the language combination: left ctrl + alt';
+lang.className = 'lang';
+outerWrapper.appendChild(lang);
+document.body.appendChild(outerWrapper);
