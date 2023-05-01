@@ -6,8 +6,8 @@ export default class Virtual {
       const outerEl = document.querySelector('.CapsLock');
       if (e.getModifierState('CapsLock')) {
         outerEl.classList.add('active');
-        for (let i = 0; i < keys.capsLockKeys.length; i += 1) {
-          const el = document.querySelector(`.${keys.capsLockKeys[i]}`);
+        for (let i = 0; i < keys.eng.capsLockKeys.length; i += 1) {
+          const el = document.querySelector(`.${keys.eng.capsLockKeys[i]}`);
           const innerEl1 = el.querySelector('.caseDown');
           innerEl1.classList.add('hidden');
           const innerEl2 = el.querySelector('.caseUp');
@@ -15,8 +15,8 @@ export default class Virtual {
         }
       } else {
         outerEl.classList.remove('active');
-        for (let i = 0; i < keys.capsLockKeys.length; i += 1) {
-          const el = document.querySelector(`.${keys.capsLockKeys[i]}`);
+        for (let i = 0; i < keys.eng.capsLockKeys.length; i += 1) {
+          const el = document.querySelector(`.${keys.eng.capsLockKeys[i]}`);
           const innerEl1 = el.querySelector('.caseDown');
           innerEl1.classList.remove('hidden');
           const innerEl2 = el.querySelector('.caseUp');
@@ -29,16 +29,16 @@ export default class Virtual {
   static shiftHandler(e) {
     if (e.code === 'ShiftRight' || e.code === 'ShiftLeft') {
       if (e.shiftKey === true) {
-        for (let i = 0; i < keys.shiftKeys.length; i += 1) {
-          const el = document.querySelector(`.${keys.shiftKeys[i]}`);
+        for (let i = 0; i < keys.eng.shiftKeys.length; i += 1) {
+          const el = document.querySelector(`.${keys.eng.shiftKeys[i]}`);
           const innerEl1 = el.querySelector('.caseDown');
           innerEl1.classList.add('hidden');
           const innerEl2 = el.querySelector('.caseUp');
           innerEl2.classList.remove('hidden');
         }
       } else {
-        for (let i = 0; i < keys.shiftKeys.length; i += 1) {
-          const el = document.querySelector(`.${keys.shiftKeys[i]}`);
+        for (let i = 0; i < keys.eng.shiftKeys.length; i += 1) {
+          const el = document.querySelector(`.${keys.eng.shiftKeys[i]}`);
           const innerEl1 = el.querySelector('.caseDown');
           innerEl1.classList.remove('hidden');
           const innerEl2 = el.querySelector('.caseUp');

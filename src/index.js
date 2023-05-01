@@ -9,9 +9,22 @@ addLayout();
 
 // const handler = new Virtual();
 
+function changeLang(e) {
+  if (e.altKey === true && e.ctrlKey === true) {
+    for (let i = 0; i < keys.keyboard.length; i += 1) {
+      const el = document.querySelector('.rus .caseDown');
+      // const el = document.querySelector(`.${keys.capsLockKeys[i]}`);
+      const innerEl1 = el.querySelector('.caseDown');
+      innerEl1.classList.add('hidden');
+      const innerEl2 = el.querySelector('.caseUp');
+      innerEl2.classList.remove('hidden');
+    }
+  }
+}
+
 function keyDownHandler(e) {
   if (document.querySelector(`.${e.code}`)) { // чтобы не падало при нажатии иных клавиш
-    // console.log(e);
+    console.log(e);
     Virtual.capsLockHandler(e);
     Virtual.shiftHandler(e);
     const el = document.querySelector(`.${e.code}`);
@@ -27,12 +40,6 @@ function keyUpHandler(e) {
     }
     Virtual.capsLockHandler(e);
     Virtual.shiftHandler(e);
-  }
-}
-
-function changeLang(e) {
-  if (e.code === 'ControlLeft' || e.code === 'AltLeft') {
-    
   }
 }
 
