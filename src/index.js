@@ -30,5 +30,11 @@ function keyUpHandler(e) {
   }
 }
 
+function changeLang(e) {
+  if (e.code === 'ControlLeft' || e.code === 'AltLeft') {
+    
+  }
+}
+
 document.addEventListener('keydown', keyDownHandler);
 document.addEventListener('keyup', keyUpHandler);

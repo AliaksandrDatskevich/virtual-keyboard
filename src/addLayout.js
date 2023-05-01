@@ -22,16 +22,22 @@ export default function addLayout() {
     for (let j = 0; j < keys.keyboard[i].length; j += 1) {
       const key = document.createElement('div');
       key.className = `key ${keys.keyboard[i][j].className}`;
+
+      // start eng
+
       const character = document.createElement('span');
       character.className = 'eng';
+
       const cDown = document.createElement('span');
       cDown.textContent = keys.keyboard[i][j].eng.caseDown;
       cDown.className = 'caseDown';
       character.appendChild(cDown);
+
       const cUp = document.createElement('span');
       cUp.textContent = keys.keyboard[i][j].eng.caseUp;
       cUp.className = 'caseUp hidden';
       character.appendChild(cUp);
+
       const cLock = document.createElement('span');
       if (keys.keyboard[i][j].eng.caps) {
         cLock.textContent = keys.keyboard[i][j].eng.caps;
@@ -40,6 +46,7 @@ export default function addLayout() {
       }
       cLock.className = 'caps hidden';
       character.appendChild(cLock);
+
       const cCapsShift = document.createElement('span');
       if (keys.keyboard[i][j].eng.shiftCaps) {
         cCapsShift.textContent = keys.keyboard[i][j].eng.shiftCaps;
@@ -48,7 +55,46 @@ export default function addLayout() {
       }
       cCapsShift.className = 'shiftCaps hidden';
       character.appendChild(cCapsShift);
+
       key.appendChild(character);
+
+      // end eng, start other
+
+      const characterOther = document.createElement('span');
+      characterOther.className = 'rus';
+
+      const cDownOther = document.createElement('span');
+      cDownOther.textContent = keys.keyboard[i][j].rus.caseDown;
+      cDownOther.className = 'caseDown hidden';
+      characterOther.appendChild(cDownOther);
+
+      const cUpOther = document.createElement('span');
+      cUpOther.textContent = keys.keyboard[i][j].rus.caseUp;
+      cUpOther.className = 'caseUp hidden';
+      characterOther.appendChild(cUpOther);
+
+      const cLockOther = document.createElement('span');
+      if (keys.keyboard[i][j].rus.caps) {
+        cLockOther.textContent = keys.keyboard[i][j].rus.caps;
+      } else {
+        cLockOther.textContent = keys.keyboard[i][j].rus.caseUp;
+      }
+      cLockOther.className = 'caps hidden';
+      characterOther.appendChild(cLockOther);
+
+      const cCapsShiftOther = document.createElement('span');
+      if (keys.keyboard[i][j].rus.shiftCaps) {
+        cCapsShiftOther.textContent = keys.keyboard[i][j].rus.shiftCaps;
+      } else {
+        cCapsShiftOther.textContent = keys.keyboard[i][j].rus.caseDown;
+      }
+      cCapsShiftOther.className = 'shiftCaps hidden';
+      characterOther.appendChild(cCapsShiftOther);
+
+      key.appendChild(characterOther);
+
+      // end other
+
       row.appendChild(key);
     }
     keyboard.appendChild(row);
