@@ -1,47 +1,74 @@
 import './style.scss';
-
+import addLayout from './addLayout';
 import keys from './keys';
 
 // npx eslint src/index.js
 
-const outerWrapper = document.createElement('div');
-outerWrapper.className = 'wrapper';
+addLayout();
 
-const title = document.createElement('p');
-title.textContent = 'Virtual Keyboard';
-title.className = 'title';
-outerWrapper.appendChild(title);
-
-const textArea = document.createElement('textarea');
-textArea.className = 'textarea';
-outerWrapper.appendChild(textArea);
-
-const keyboard = document.createElement('div');
-keyboard.className = 'keyboard';
-
-for (let i = 0; i < keys.length; i += 1) {
-  const row = document.createElement('div');
-  row.className = 'keyboard-row';
-  for (let j = 0; j < keys[i].length; j += 1) {
-    const key = document.createElement('div');
-    key.className = `key ${keys[i][j].className}`;
-    const character = document.createElement('span');
-    character.textContent = keys[i][j].eng.caseUp;
-    key.appendChild(character);
-    row.appendChild(key);
+function capsLockHandler(e) {
+  if (e.code === 'CapsLock' || e.code === 'ShiftRight' || e.code === 'ShiftLeft') {
+    const outerEl = document.querySelector('.CapsLock');
+    if (e.getModifierState('CapsLock')) {
+      outerEl.classList.add('active');
+      for (let i = 0; i < keys.capsLockKeys.length; i += 1) {
+        const el = document.querySelector(`.${keys.capsLockKeys[i]}`);
+        const innerEl1 = el.querySelector('.caseDown');
+        innerEl1.classList.add('hidden');
+        const innerEl2 = el.querySelector('.caseUp');
+        innerEl2.classList.remove('hidden');
+      }
+    } else {
+      outerEl.classList.remove('active');
+      for (let i = 0; i < keys.capsLockKeys.length; i += 1) {
+        const el = document.querySelector(`.${keys.capsLockKeys[i]}`);
+        const innerEl1 = el.querySelector('.caseDown');
+        innerEl1.classList.remove('hidden');
+        const innerEl2 = el.querySelector('.caseUp');
+        innerEl2.classList.add('hidden');
+      }
+    }
   }
-  keyboard.appendChild(row);
 }
-outerWrapper.appendChild(keyboard);
 
-const os = document.createElement('p');
-os.textContent = 'The keyboard was created in the Windows operating system';
-os.className = 'os';
-outerWrapper.appendChild(os);
+function shiftHandler(e) {
+  if (e.code === 'ShiftRight' || e.code === 'ShiftLeft') {
+    if (e.shiftKey === true) {
+      for (let i = 0; i < keys.shiftKeys.length; i += 1) {
+        const el = document.querySelector(`.${keys.shiftKeys[i]}`);
+        const innerEl1 = el.querySelector('.caseDown');
+        innerEl1.classList.add('hidden');
+        const innerEl2 = el.querySelector('.caseUp');
+        innerEl2.classList.remove('hidden');
+      }
+    } else {
+      for (let i = 0; i < keys.shiftKeys.length; i += 1) {
+        const el = document.querySelector(`.${keys.shiftKeys[i]}`);
+        const innerEl1 = el.querySelector('.caseDown');
+        innerEl1.classList.remove('hidden');
+        const innerEl2 = el.querySelector('.caseUp');
+        innerEl2.classList.add('hidden');
+      }
+    }
+  }
+}
 
-const lang = document.createElement('p');
-lang.textContent = 'To switch the language combination: left ctrl + alt';
-lang.className = 'lang';
-outerWrapper.appendChild(lang);
+function keyDownHandler(e) {
+  // console.log(e);
+  capsLockHandler(e);
+  shiftHandler(e);
+  const el = document.querySelector(`.${e.code}`);
+  el.classList.add('active');
+}
 
-document.body.appendChild(outerWrapper);
+function keyUpHandler(e) {
+  const el = document.querySelector(`.${e.code}`);
+  if (e.code !== 'CapsLock') {
+    el.classList.remove('active');
+  }
+  capsLockHandler(e);
+  shiftHandler(e);
+}
+
+document.addEventListener('keydown', keyDownHandler);
+document.addEventListener('keyup', keyUpHandler);
