@@ -22,7 +22,7 @@ function setLocalStorage() {
 window.addEventListener('beforeunload', setLocalStorage);
 
 function changeLang(e) {
-  if (e.altKey === true && e.ctrlKey === true) {
+  if (e.altKey === true && e.shiftKey === true) {
     if (language === 'eng') {
       language = 'rus';
     } else {

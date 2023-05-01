@@ -107,7 +107,7 @@ export default function addLayout() {
   outerWrapper.appendChild(os);
 
   const lang = document.createElement('p');
-  lang.textContent = 'To switch the language combination press: left ctrl + alt';
+  lang.textContent = 'To switch the language press combination: left shift + alt';
   lang.className = 'lang';
   outerWrapper.appendChild(lang);
 
