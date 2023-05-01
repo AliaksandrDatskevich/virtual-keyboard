@@ -5,28 +5,39 @@ import Virtual from './virtual';
 
 // npx eslint src/index.js
 
+let language = 'eng';
+
 addLayout();
 
-// const handler = new Virtual();
+function getLocalStorage() {
+  if (localStorage.getItem('language')) {
+    language = localStorage.getItem('language');
+  }
+}
+window.addEventListener('load', getLocalStorage);
+
+function setLocalStorage() {
+  localStorage.setItem('language', language);
+}
+window.addEventListener('beforeunload', setLocalStorage);
 
 function changeLang(e) {
   if (e.altKey === true && e.ctrlKey === true) {
-    for (let i = 0; i < keys.keyboard.length; i += 1) {
-      const el = document.querySelector('.rus .caseDown');
-      // const el = document.querySelector(`.${keys.capsLockKeys[i]}`);
-      const innerEl1 = el.querySelector('.caseDown');
-      innerEl1.classList.add('hidden');
-      const innerEl2 = el.querySelector('.caseUp');
-      innerEl2.classList.remove('hidden');
+    if (language === 'eng') {
+      language = 'rus';
+    } else {
+      language = 'eng';
     }
+    setLocalStorage();
   }
 }
 
 function keyDownHandler(e) {
   if (document.querySelector(`.${e.code}`)) { // чтобы не падало при нажатии иных клавиш
-    console.log(e);
+    // console.log(e);
     Virtual.capsLockHandler(e);
     Virtual.shiftHandler(e);
+    changeLang(e);
     const el = document.querySelector(`.${e.code}`);
     el.classList.add('active');
   }
