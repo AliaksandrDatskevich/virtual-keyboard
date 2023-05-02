@@ -11,6 +11,7 @@ export default function addLayout() {
 
   const textArea = document.createElement('textarea');
   textArea.className = 'textarea';
+  textArea.setAttribute('autofocus', '');
   outerWrapper.appendChild(textArea);
 
   const keyboard = document.createElement('div');
