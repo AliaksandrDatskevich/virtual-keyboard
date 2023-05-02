@@ -1,0 +1,128 @@
+@import url(normalize.css);
+
+.wrapper {
+  margin: 0 auto;
+  font-family: "Trebuchet MS", "Helvetica", sans-serif;
+}
+
+.textarea {
+  display: block;
+  width: 700px;
+  height: 200px;
+  margin: 10px auto 10px;
+  padding: 5px;
+  font-size: 18px;
+  color: #444444;
+}
+
+.title,
+.os,
+.lang {
+  margin: 10px auto;
+  text-align: center
+}
+
+.title {
+  font-size: 40px;
+  color: rgba(101,134,177,0.8);
+  -webkit-text-stroke: 2px rgba(134,177,101,0.8);
+  -webkit-text-fill-color: rgba(101,134,177,0.8);
+}
+
+.keyboard {
+  width: 704px;
+  height: 240px;
+  margin: 0 auto;
+  padding: 5px;
+  padding-left: 0;
+  padding-bottom: 0;
+  background: #888888;
+  border: 3px solid #222222;
+  border-radius: 5px;
+}
+
+.keyboard-row {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 8px
+}
+
+.key {
+  float: left;
+  width: 40px;
+  height: 40px;
+  margin-left: 6px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: center;
+  color: #ffffff;
+  background: #444444;
+  border-radius: 3px;
+  cursor: pointer;
+  user-select: none;
+  transition: border-radius 0.2s, background-color 0.2s;
+
+  &:hover {
+    background: #79aa89
+  }
+
+}
+
+.Backspace,
+.Tab,
+.Delete,
+.CapsLock,
+.Enter,
+.ShiftLeft,
+.ShiftRight,
+.AltLeft,
+.AltRight,
+.ArrowUp,
+.ArrowLeft,
+.ArrowDown,
+.ArrowRight,
+.ControlLeft,
+.ControlRight,
+.MetaLeft {
+  font-weight: 600;
+  background-color: #222222
+}
+
+.Backspace,
+.ShiftLeft {
+  width: 100px
+}
+
+.Tab {
+  width: 54px
+}
+
+.Delete {
+  width: 40px
+}
+
+.CapsLock {
+  width: 75px
+}  
+
+.Enter {
+  width: 111px
+}
+
+.ShiftRight {
+  width: 86px
+}
+
+.Space {
+  width: 330px
+}
+
+.hidden {
+  display: none
+}
+
+.active,
+.key:active {
+  background-color: #2cfd72;
+  border-radius: 20px
+}
