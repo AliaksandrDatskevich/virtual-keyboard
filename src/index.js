@@ -9,13 +9,6 @@ let language = 'eng';
 
 addLayout();
 
-function getLocalStorage() {
-  if (localStorage.getItem('language')) {
-    language = localStorage.getItem('language');
-  }
-}
-window.addEventListener('load', getLocalStorage);
-
 function setLocalStorage() {
   localStorage.setItem('language', language);
 }
@@ -33,7 +26,7 @@ function changeLang(e) {
 }
 
 function keyDownHandler(e) {
-  if (document.querySelector(`.${e.code}`)) { // чтобы не падало при нажатии иных клавиш
+  if (document.querySelector(`.${e.code}`)) {
     // console.log(e);
     Virtual.capsLockHandler(e);
     Virtual.shiftHandler(e);
@@ -53,6 +46,16 @@ function keyUpHandler(e) {
     Virtual.shiftHandler(e);
   }
 }
+
+function getLocalStorage() {
+  if (localStorage.getItem('language')) {
+    language = localStorage.getItem('language');
+  }
+  const ev = new KeyboardEvent('keydown', { code: 'ShiftLeft' });
+  keyDownHandler(ev);
+  keyUpHandler(ev);
+}
+window.addEventListener('load', getLocalStorage);
 
 document.addEventListener('keydown', keyDownHandler);
 document.addEventListener('keyup', keyUpHandler);
